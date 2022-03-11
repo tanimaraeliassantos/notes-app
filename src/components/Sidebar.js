@@ -11,6 +11,12 @@ export default function Sidebar(props) {
       >
         {/* Define name of note as first line of text from note by splitting text from note when it reaches a \n */}
         <h4 className="text-snippet">{note.body.split("\n")[0]}</h4>
+        <button
+          className="delete-btn"
+          onClick={(event) => props.deleteNote(event, note.id)}
+        >
+          <i className="gg-trash trash-icon"></i>
+        </button>
       </div>
     </div>
   ));
