@@ -9,7 +9,7 @@ import "react-mde/lib/styles/css/react-mde-all.css";
 
 export default function App() {
   const [notes, setNotes] = useState(
-    JSON.parse(localStorage.getItem("notes")) || []
+    () => JSON.parse(localStorage.getItem("notes")) || []
   );
   const [currentNoteId, setCurrentNoteId] = useState(
     (notes[0] && notes[0].id) || ""
@@ -28,15 +28,40 @@ export default function App() {
     setCurrentNoteId(newNote.id);
   }
 
+  // Rearrange the most recently modified note to the top of the list
+  // Pseudo code:
+  // Create a new empty array
+  // Loop over the original array
+  // if the id matches
+  // put the updated note at the
+  // beginning of the new array
+  // else
+  // push the old note to the end
+  // of the new array
+  // return the new array
   function updateNote(text) {
-    setNotes((oldNotes) =>
-      oldNotes.map((oldNote) => {
-        return oldNote.id === currentNoteId
-          ? { ...oldNote, body: text }
-          : oldNote;
-      })
-    );
+    setNotes((oldNotes) => {
+      const newArray = [];
+      for (let i = 0; i < oldNotes.length; i++) {
+        const oldNote = oldNotes[i];
+        if (oldNote.id === currentNoteId) {
+          newArray.unshift({ ...oldNote, body: text });
+        } else {
+          newArray.push(oldNote);
+        }
+      }
+      return newArray;
+    });
   }
+
+  // this updateNote does not reposition notes
+  //   setNotes((oldNotes) =>
+  //   oldNotes.map((oldNote) => {
+  //     return oldNote.id === currentNoteId
+  //       ? { ...oldNote, body: text }
+  //       : oldNote;
+  //   })
+  // );
 
   function findCurrentNote() {
     return (
