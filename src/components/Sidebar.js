@@ -9,7 +9,8 @@ export default function Sidebar(props) {
         }`}
         onClick={() => props.setCurrentNoteId(note.id)}
       >
-        <h4 className="text-snippet">Note {index + 1}</h4>
+        {/* Define name of note as first line of text from note by splitting text from note when it reaches a \n */}
+        <h4 className="text-snippet">{note.body.split("\n")[0]}</h4>
       </div>
     </div>
   ));
