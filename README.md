@@ -1,8 +1,8 @@
 # Notes APP
 
-This is a ...
+This is a notes application built for a course on React Skills with Bob Ziroll. It is an interactive page, where users can create notes with title and bodies using Markdown. Notes are stored in local storage. Notes can be added, edited or deleted. The recently updated notes stay at the top of the notes' list.
 
-(put image here)
+![Notes App Showcase](notes-app-showcase.png)
 
 ## Features
 
