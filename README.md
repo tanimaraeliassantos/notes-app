@@ -6,6 +6,7 @@ This is a notes application built for a course on React Skills with Bob Ziroll. 
 
 ## Features
 
+- Users can add, edit, and delete
 - Sync notes with localStorage
 - Notes with summary titles
 - Modified notes go to the top of the list
